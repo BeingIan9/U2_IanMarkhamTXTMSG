@@ -1,0 +1,13 @@
+<Window x:Class="U2IanMarkhamTXTMSG.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:U2IanMarkhamTXTMSG"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Margin="0,0,3.4,260.8">
+        <TextBox x:Name="txtinput" Text="Translate Your Texts Here" TextWrapping="Wrap" />
+        <Button x:Name="btntranslate" Click="btntranslate_Click" Content="Translate" Margin="0,94,0,-94"/>
+    </Grid>
+</Window>
