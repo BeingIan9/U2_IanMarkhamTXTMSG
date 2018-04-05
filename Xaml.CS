@@ -1,3 +1,8 @@
+/*Ian Markham
+ * March 29, 2018
+ * Translates shortform text into full words
+ * U2IanMarkhamTXTMSG
+ */
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +23,15 @@ namespace U2IanMarkhamTXTMSG
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    //Holds values that are later called.
+    public static class Globals
+    {
+        public static string replacedText;
+        public static string[] splitText = new string[50];
+        public static int lines;
+        public static int looptimes = 2;
+    }
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -25,58 +39,93 @@ namespace U2IanMarkhamTXTMSG
             InitializeComponent();
         }
 
-        private void btntranslate_Click(object sender, RoutedEventArgs e)
+        //Triggers when user clicks the run button
+        public void Click_Run(Object sender, RoutedEventArgs e)
         {
-            string input = txtinput.Text;
-            if (input == "CU")
+            Globals.replacedText = txtinput.Text.Replace("\r", "");
+            Globals.splitText = Globals.replacedText.Split('\n');
+            Globals.lines = Globals.splitText.Length;
+            Console.WriteLine(Globals.lines);
+            Globals.looptimes = Globals.lines;
+            txtoutput.Text = "";
+
+            //Reads through all lines of text entered and matches it to the shortforms.
+            for (int i = 0; i < Globals.looptimes; i++)
             {
-                MessageBox.Show("see You");
+
+                //Seperates output text, acts as "enter" key.
+                if (txtinput.Text == "")
+                {
+                }
+                else
+                {
+                    txtoutput.Text = txtoutput.Text + "\n";
+                }
+
+
+                //Checks user input and whether or not it matches stated shortforms.
+                if (Globals.splitText[i] == "LOL")
+                {
+                    //Replaces the shortform with the normal form, then sets it to the output text.
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("LOL", "Laugh out loud.");
+                }
+                else if (Globals.splitText[i] == "CU")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("CU", "See you.");
+                }
+                else if (Globals.splitText[i] == ":-)")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace(":-)", "I'm happy.");
+                }
+                else if (Globals.splitText[i] == ":-(")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace(":-(", "I'm sad.");
+                }
+                else if (Globals.splitText[i] == ";-)")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace(";-)", "Wink.");
+                }
+                else if (Globals.splitText[i] == ":-P")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace(":-P", "Stick out tongue.");
+                }
+                else if (Globals.splitText[i] == "(~.~)")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("(~.~)", "I'm sleepy.");
+                }
+                else if (Globals.splitText[i] == "TA")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("TA", "Totally awesome.");
+                }
+                else if (Globals.splitText[i] == "CCC")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("CCC", "Canadian Computing Competition.");
+                }
+                else if (Globals.splitText[i] == "CUZ")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("CUZ", "Because.");
+                }
+                else if (Globals.splitText[i] == "TY")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("TY", "Thank-you.");
+                }
+                else if (Globals.splitText[i] == "YW")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("YW", "You're welcome.");
+                }
+                else if (Globals.splitText[i] == "TTYL")
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i].Replace("TTYL", "Talk to you later.");
+                    //Tells that program is closing.
+                    MessageBox.Show("Program closing.");
+                    //Program is closed
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    txtoutput.Text = txtoutput.Text + Globals.splitText[i];
+                }
             }
-            else if (input == ":-)")
-            {
-                MessageBox.Show("I'm happy");
-            }
-            else if (input == ":-(")
-            {
-                MessageBox.Show("I'm unhappy");
-            }
-            else if (input == ";-)")
-            {
-                MessageBox.Show("wink");
-            }
-            else if (input == ":-P")
-            {
-                MessageBox.Show("stick out my tongue");
-            }
-            else if (input == "(˜.˜)")
-            {
-                MessageBox.Show("sleepy");
-            }
-            else if (input == "TA")
-            {
-                MessageBox.Show("totally awesome");
-            }
-            else if (input == "CCC")
-            {
-                MessageBox.Show("Canadian Computing Competition");
-            }
-            else if (input == "CUZ")
-            {
-                MessageBox.Show("because");
-            }
-            else if (input == "TY")
-            {
-                MessageBox.Show("thank-you");
-            }
-            else if (input == "YW")
-            {
-                MessageBox.Show("you're welcome");
-            }
-            else if (input == "TTYL")
-            {
-                MessageBox.Show("talk to you later");
-            }
-            
         }
     }
 }
