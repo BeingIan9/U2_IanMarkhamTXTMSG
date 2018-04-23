@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Margin="0,0,3.4,260.8">
-        <TextBox x:Name="txtinput" Text="Translate Your Texts Here" TextWrapping="Wrap" />
+        <TextBox x:Name="txtinput" Text="Translate Your Texts Here" TextWrapping="Wrap" AcceptsReturn="True" /> 
         <Button x:Name="btntranslate" Click="btntranslate_Click" Content="Translate" Margin="0,94,0,-94"/>
-        <TextBox x:Name="txtoutput" Text="" TextWrapping="Wrap" Margin="0,183,-1,-183" />
     </Grid>
 </Window>
